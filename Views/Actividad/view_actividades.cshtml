@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Actividades - Proyecto";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Encabezado -->
+        <div class="bg-primary text-white text-center py-3">
+            <h1>Actividades en El Salvador</h1>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="container my-4">
+            <div class="row">
+                <!-- Resultados -->
+                <div class="col-md-12">
+                    <h4>Anuncios de Actividades</h4>
+
+                    <!-- Tarjetas de resultados para Actividades -->
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col">
+                            <div class="card">
+                                <img src="~/images/treking.jpg" alt="treking" class="img-fluid" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Trekking en el Parque Nacional El Imposible</h5>
+                                    <p class="card-text">Vive una experiencia única de senderismo en uno de los parques más emblemáticos de El Salvador.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="~/images/volcan_sanvi.jpg" alt="volcan_sanvi" class="img-fluid" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Tour en el Volcán San Vicente</h5>
+                                    <p class="card-text">Realiza un tour guiado al Volcán San Vicente y descubre sus impresionantes paisajes.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿@model Proyecto_Final_Turicentro_Estructura_de_datos.Models.TblReserva
+
+@{
+    ViewData["Title"] = "Crear Reserva";
+}
+
+<h1>Crear Reserva</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- Formulario para crear la reserva -->
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Mensaje de éxito -->
+            @if (ViewData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    @ViewData["SuccessMessage"]
+                </div>
+            }
+
+            <!-- Campo oculto de ÁreaId -->
+            <div class="form-group">
+                <label asp-for="AreaId" class="control-label"></label>
+                <input asp-for="AreaId" class="form-control" value="33" readonly />
+                <span asp-validation-for="AreaId" class="text-danger"></span>
+            </div>
+
+            <!-- Fecha -->
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" type="date" required />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+
+            <!-- Hora de inicio -->
+            <div class="form-group">
+                <label asp-for="HoraInicio" class="control-label"></label>
+                <input asp-for="HoraInicio" class="form-control" id="HoraInicio" type="time" required onchange="calcularCosto()" />
+                <span asp-validation-for="HoraInicio" class="text-danger"></span>
+            </div>
+
+            <!-- Hora de fin -->
+            <div class="form-group">
+                <label asp-for="HoraFin" class="control-label"></label>
+                <input asp-for="HoraFin" class="form-control" id="HoraFin" type="time" required onchange="calcularCosto()" />
+                <span asp-validation-for="HoraFin" class="text-danger"></span>
+            </div>
+
+            <!-- Costo total -->
+            <div class="form-group">
+                <label>Costo Total:</label>
+                <input type="text" id="CostoTotal" class="form-control" readonly />
+                <!-- Campo oculto para enviar el costo total al controlador -->
+                <input asp-for="CostoTotal" type="hidden" id="CostoTotalHidden" />
+            </div>
+
+            <!-- Botón para crear la reserva -->
+            <div class="form-group">
+                <input type="submit" value="Crear Reserva" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <!-- Mostrar reserva creada -->
+        @if (ViewData["ReservaCreada"] != null)
+        {
+            var reservaCreada = (Proyecto_Final_Turicentro_Estructura_de_datos.Models.TblReserva)ViewData["ReservaCreada"];
+            <div class="alert alert-info">
+                <h4>Reserva Creada:</h4>
+                <ul>
+                    <li>Área ID: @reservaCreada.AreaId</li>
+                    <li>Fecha: @reservaCreada.Fecha.ToShortDateString()</li>
+                    <li>Hora de Inicio: @reservaCreada.HoraInicio</li>
+                    <li>Hora de Fin: @reservaCreada.HoraFin</li>
+                    <li>Costo Total: $@reservaCreada.CostoTotal</li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+<script>
+    // Función para calcular el costo
+    function calcularCosto() {
+        var horaInicio = document.getElementById("HoraInicio").value;
+        var horaFin = document.getElementById("HoraFin").value;
+
+        if (horaInicio && horaFin) {
+            var inicio = new Date("1970-01-01T" + horaInicio + "Z");
+            var fin = new Date("1970-01-01T" + horaFin + "Z");
+
+            var duracionHoras = (fin - inicio) / (1000 * 60 * 60);
+
+            if (duracionHoras < 0) {
+                duracionHoras += 24; // Si la hora de fin es pasada medianoche
+            }
+
+            var costoTotal = duracionHoras * 12.00; // Precio por hora
+            document.getElementById("CostoTotal").value = costoTotal.toFixed(2);
+            document.getElementById("CostoTotalHidden").value = costoTotal.toFixed(2); // Actualiza el campo oculto
+        }
+    }
+</script>

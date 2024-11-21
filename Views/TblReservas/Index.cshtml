@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Proyecto_Final_Turicentro_Estructura_de_datos.Models.TblReserva>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoraFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoraFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area.AreaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.UsuarioId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReservaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReservaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReservaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

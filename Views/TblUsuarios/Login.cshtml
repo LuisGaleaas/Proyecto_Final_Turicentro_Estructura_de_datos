@@ -1,0 +1,67 @@
+﻿@model Proyecto_Final_Turicentro_Estructura_de_datos.Models.TblUsuario
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!------ Incluye los estilos y scripts de Bootstrap y FontAwesome ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="card">
+            <h4 class="card-header">Login</h4>
+            <div class="card-body">
+                <form asp-action="Login" method="post" data-toggle="validator" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Campo de correo electrónico -->
+                    <div class="form-group">
+                        <label asp-for="Correo" class="control-label">Email / Usuario</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+                            </div>
+                            <input asp-for="Correo" class="form-control" pattern=".{4,}" title="Cuatro(4) o más caracteres" required />
+                        </div>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+
+                    <!-- Campo de contraseña -->
+                    <div class="form-group">
+                        <label asp-for="Contraseña" class="control-label">Contraseña</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                            </div>
+                            <input asp-for="Contraseña" type="password" class="form-control" pattern=".{4,}" title="Cuatro(4) o más caracteres" required />
+                        </div>
+                        <span asp-validation-for="Contraseña" class="text-danger"></span>
+                    </div>
+
+                    
+
+                    <!-- Botón de inicio de sesión -->
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block" />
+                    </div>
+                </form>
+
+                <!-- Opciones adicionales -->
+                <div class="clear"></div>
+                <i class="fa fa-user fa-fw"></i>
+                ¿No tienes cuenta aún? <a asp-action="RegistroCliente">Regístrate</a><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

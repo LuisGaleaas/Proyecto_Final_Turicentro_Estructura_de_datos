@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Piscinas - Proyecto";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Encabezado -->
+        <div class="bg-primary text-white text-center py-3">
+            <h1>Piscinas en El Salvador</h1>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="container my-4">
+            <div class="row">
+                <!-- Resultados -->
+                <div class="col-md-12">
+                    <h4>Anuncios de Piscinas</h4>
+
+                    <!-- Tarjetas de resultados para Piscinas -->
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                        <div class="col">
+                            <div class="card">
+                                <img src="~/images/los-chorros.jpg" alt="los-chorros" class="img-fluid" />
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Piscina Turicentro Los Chorros</h5>
+                                    <p class="card-text">Relájate en las cálidas aguas de este famoso turicentro con vistas espectaculares.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="~/images/santa_teresita.jpg" alt="santa_teresita" class="img-fluid" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Piscina y Spa en Santa Teresa</h5>
+                                    <p class="card-text">Vive una experiencia relajante en un spa con piscina en el corazón de El Salvador.</p>
+                                    <a href="#" class="btn btn-primary">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

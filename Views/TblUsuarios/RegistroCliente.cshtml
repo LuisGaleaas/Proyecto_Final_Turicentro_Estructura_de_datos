@@ -1,0 +1,76 @@
+﻿@model Proyecto_Final_Turicentro_Estructura_de_datos.Models.TblUsuario
+
+@{
+    ViewData["Title"] = "RegistroCliente";
+}
+
+<!------ Incluye los estilos y scripts de Bootstrap y FontAwesome ---------->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="card">
+            <h4 class="card-header">Registro de Cliente</h4>
+            <div class="card-body">
+                <form asp-action="RegistroCliente" method="post" data-toggle="validator" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <!-- Campo de Nombre -->
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                            </div>
+                            <input asp-for="Nombre" class="form-control" pattern=".{2,}" title="Dos(2) o más caracteres" required />
+                        </div>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    </div>
+
+                    <!-- Campo de Correo -->
+                    <div class="form-group">
+                        <label asp-for="Correo" class="control-label">Correo</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+                            </div>
+                            <input asp-for="Correo" class="form-control" type="email" required />
+                        </div>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+
+                    <!-- Campo de Contraseña -->
+                    <div class="form-group">
+                        <label asp-for="Contraseña" class="control-label">Contraseña</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                            </div>
+                            <input asp-for="Contraseña" class="form-control" type="password" pattern=".{4,}" title="Cuatro(4) o más caracteres" required />
+                        </div>
+                        <span asp-validation-for="Contraseña" class="text-danger"></span>
+                    </div>
+
+                    <!-- Botón de registro -->
+                    <div class="form-group">
+                        <input type="submit" value="Registrar" class="btn btn-primary btn-lg btn-block" />
+                    </div>
+                </form>
+
+                <!-- Opciones adicionales -->
+                <div class="clear"></div>
+                <i class="fa fa-arrow-left fa-fw"></i>
+                <a asp-action="Login">Volver al login</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
